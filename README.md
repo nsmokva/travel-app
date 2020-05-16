@@ -1,4 +1,5 @@
 # travel-app
+This is my first Vue.js app. You can see a live version in [Netlify](https://travel-app-nikolina.netlify.app/).
 
 ## Project setup
 ```
@@ -21,4 +22,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/).[]
