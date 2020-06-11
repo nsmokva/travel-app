@@ -1,15 +1,18 @@
 <template>
-  <div class="home">
-    <h2>All Destinations</h2>
-    <div class="destinations">
-      <div v-for="destination in destinations" :key="destination.name" class="destination">
-        <div>
-          <router-link :to="{ name: 'destination', params: { id: destination.slug }}">{{destination.name}}</router-link>  
-        </div>
-        <router-link :to="{ name: 'destination', params: { id: destination.slug }}"><img :src="require('@/assets/' + destination.image)"></router-link>
-      </div>
-    </div> 
+  <div>
+    <v-carousel continuous :show-arrows="false" cycle
+    height="auto">
+      <v-carousel-item
+        v-for="destination in destinations" :key="destination.name"
+        :src="require('@/assets/' + destination.image)"
+        :to="{ name: 'destination', params: { id: destination.slug }}">
+          <v-row class="fill-height" align="center" justify="center">
+            <div class="display-3 text-uppercase font-weight-bold white--text">{{destination.name}}</div>
+          </v-row>
+      </v-carousel-item>
+    </v-carousel>
   </div>
+  
 </template>
 
 <script>
@@ -26,24 +29,10 @@ export default {
 }
 </script>
 
-<style scoped>
-  img{
-    height: 100px;
-    width: auto;
-    padding-top: 20px; 
-  }
-  h2{
-    padding-bottom: 30px;
-  }
-  .destinations{
-    display: flex;
-    justify-content: center;
-  }
-  .destination{
-    padding: 0 20px;
-    color: #42b983;
-    font-weight: bold;
-  }
+<style>
+  /* .v-image__image{
+    opacity: 0.5;
+  } */
   
   
 </style>

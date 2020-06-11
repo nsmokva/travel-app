@@ -7,6 +7,7 @@ import NotFound from '../views/NotFound.vue'
 import store from '@/store.js'
 import User from "../views/User.vue"
 import Login from "../views/Login.vue"
+import Register from "../views/Register.vue"
 import Invoices from "../views/Invoices.vue"
 
 
@@ -23,14 +24,14 @@ Vue.use(VueRouter)
     name: 'destination',
     props: true,
     component: Destination,
-    children: [
-        {
-          path: ':experienceId',
-          name: 'experienceDetails',
-          props: true,
-          component: ExperienceDetails
-        }
-    ],
+    // children: [
+    //     {
+    //       path: ':experienceId',
+    //       name: 'experienceDetails',
+    //       props: true,
+    //       component: ExperienceDetails
+    //     }
+    // ],
     beforeEnter: (to, from, next)=>{
       const exists = store.destinations.find(destination => destination.slug === to.params.id)
       if(exists){
@@ -39,6 +40,12 @@ Vue.use(VueRouter)
         next({name:"notFound"})
       }
     }
+  },
+  {
+    path: '/destination/:id/:experienceId',
+    name: 'experienceDetails',
+    props: true,
+    component: ExperienceDetails
   },
   {
     path: '/user',
@@ -56,6 +63,11 @@ Vue.use(VueRouter)
     path: "/login",
     name: "login",
     component: Login
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Register
   },
   {
     path: '/404',

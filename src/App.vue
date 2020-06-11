@@ -1,14 +1,25 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-      <TheNavBar/>
-    </div>
-    <transition name="fade" mode="out-in">
-      <router-view :key="$route.path"></router-view>
-    </transition>
-  </div>
+  <v-app>
+    <TheNavBar/>
+    <v-content>
+      <v-container>
+        <v-row justify="center">
+          <v-col cols="12" xl="9">
+              <transition name="fade" mode="out-in">
+                <router-view :key="$route.path"></router-view>
+              </transition>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
+    <!-- <TheNavBar/>
+    <v-content>
+      <transition name="fade" mode="out-in">
+        <router-view :key="$route.path"></router-view>
+      </transition>
+    </v-content> -->
+</v-app>
+  
 </template>
 
 <script>
@@ -22,7 +33,7 @@
 </script>
 
 <style>
-  #app {
+  /* #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -30,16 +41,10 @@
     color: #2c3e50;
     padding: 0 300px;
   }
-
-  /* #nav {
-    padding: 30px;
-  } */
-
   #nav a {
     font-weight: bold;
     color: #2c3e50;
   }
-
   #nav a.router-link-exact-active {
     color: #42b983;
   }
@@ -53,5 +58,5 @@
   .fade-enter,
   .fade-leave-to {
     opacity: 0;
-  }
+  } */
 </style>

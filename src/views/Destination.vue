@@ -1,21 +1,57 @@
 <template>
   <div>
     <GoBack/>
-    <h2>{{destination.name}}</h2>
-    <div class="destination">
-      <img :src="require('@/assets/' + destination.image)">
-      <p>{{destination.description}}</p>
-    </div>
-    <h3 id="experience">Top experiences in {{destination.name}}</h3>
-    <div class="allexperiences" >
-      <div v-for="experience in destination.experiences" :key="experience.name" class="experience">
-        <router-link :to="{ name: 'experienceDetails', params: { experienceId: experience.slug }, hash: '#experience'}">
-          <img :src="require('@/assets/' + experience.image)">
-          <div>{{experience.name}}</div>
-        </router-link>
-      </div>
-    </div>
-    <router-view :key="$route.path"></router-view>
+    <v-row>
+      <v-col cols="12">
+         <h2 class="display-3 text-center pb-12 text-uppercase grey--text">{{destination.name}}</h2>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col sm="12" lg="6">
+         <v-img :src="require('@/assets/' + destination.image)" contain position="top"></v-img>
+      </v-col>
+      <v-col sm="12" lg="6">
+         <p class="grey--text pl-lg-8 pr-sm-0 text-justify">{{destination.description}}</p>
+      </v-col>
+    </v-row>
+   
+    <v-row>
+      <v-col cols="12">
+        <h3 class="display-1 text-center pb-12 text-uppercase grey--text">Top experiences in {{destination.name}}</h3>
+      </v-col>
+      <v-col>
+        <v-row>
+          <v-col v-for="experience in destination.experiences" :key="experience.name" lg="3" md="6">
+             <router-link :to="{ name: 'experienceDetails', params: { experienceId: experience.slug }}">
+               <v-img :src="require('@/assets/' + experience.image)">
+                 <v-row class="fill-height" align="center" justify="center">
+                   <v-col align="center" justify="center">
+                     <div class="display-1 font-weight-bold white--text">{{experience.name}}</div>
+                     <v-chip class="ma-2" color="secondary" text-color="white" outlined>Read more >></v-chip>
+                    </v-col>
+                  </v-row> 
+                </v-img>
+              </router-link>
+            
+          </v-col>
+        </v-row>
+        
+        
+        <!-- <div class="allexperiences">
+          <div v-for="experience in destination.experiences" :key="experience.name" class="experience">
+            <router-link :to="{ name: 'experienceDetails', params: { experienceId: experience.slug }, hash: '#experience'}">
+              <img :src="require('@/assets/' + experience.image)">
+              <div></div>
+            </router-link>
+          </div>
+        </div> -->
+      </v-col>
+    </v-row>
+    <!-- <v-row id="experience">
+      <v-col>
+        <router-view :key="$route.path"></router-view>
+      </v-col>
+    </v-row> -->
   </div>
 </template>
 
@@ -47,13 +83,12 @@
 </script>
 
 <style scoped>
-  h2{
+  /* h2{
     font-size: 40px;
     margin: 30px 0 0 0;
   }
   img{
     width: 400px;
-    /* height: auto; */
     padding-right: 20px;
   }
   p{
@@ -95,5 +130,5 @@
     display: flex;
     justify-content: space-between;
     padding: 50px 0;
-  }
+  } */
 </style>
